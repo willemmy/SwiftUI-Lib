@@ -1,22 +1,28 @@
+/*
+  Add the following to a View using PhotoPicker
 
+  @State private var someImage = UIImage(named: "Image Placeholder")!
 
+  @State private var isSheetShowing = false
 
+  *********************
 
-//  Add the following to a View using PhotoPicker
-//
-//  @State private var someImage = UIImage(named: "Image Placeholder")!
-//
-//  @State private var isSheetShowing = false
-//
-//  *********************
-//
-//  Add an Image to the View with modifiers
-//  Image(uiImage: someImage) to a View
-//
-//  Add a TapGesture to display a sheet
-//  .onTapGesture {
-//      isSheetShowing = true
-//  }
+  Add an Image to the View with modifiers
+  Image(uiImage: someImage)
+
+  Add a TapGesture to display a sheet to Image
+  .onTapGesture {
+      isSheetShowing = true
+  }
+  
+  **********************
+
+  Add a sheet to the end of a container in the view
+  .sheet(isPresented: $isSheetShowing) {
+      PhotoPicker(newImage: $someImage)
+  }
+  
+ */
 
 import SwiftUI
 
