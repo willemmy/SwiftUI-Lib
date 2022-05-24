@@ -1,0 +1,41 @@
+import SwiftUI
+
+//Allow a user of this app to select an image from photo library
+
+struct PhotoPicker: UIViewControllerRepresentable {
+    
+    @Binding var newImage: UIImage
+    
+    func makeUIViewController(context: Context) -> UIImagePickerController {
+        let picker = UIImagePickerController()
+        picker.delegate = context.coordinator
+        picker.allowsEditing = true
+        return picker
+    }
+    
+    func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {}
+    
+    func makeCoordinator() -> Coordinator {
+        return Coordinator(inPhotoPicker: self)
+    }
+    
+    final class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+        
+        let photoPicker: PhotoPicker
+        
+        init(inPhotoPicker: PhotoPicker) {
+            photoPicker = inPhotoPicker
+        }
+        
+        //set up for edited picture use
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            if let image = info[.editedImage]  as? UIImage {
+                photoPicker.newImage = image
+            } else {
+                //Error problems go here
+            }
+            picker.dismiss(animated: true)
+        }
+    }
+    
+}
