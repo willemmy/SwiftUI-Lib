@@ -1,7 +1,26 @@
+
+
+
+
+//  Add the following to a View using PhotoPicker
+//
+//  @State private var someImage = UIImage(named: "Image Placeholder")!
+//
+//  @State private var isSheetShowing = false
+//
+//  *********************
+//
+//  Add an Image to the View with modifiers
+//  Image(uiImage: someImage) to a View
+//
+//  Add a TapGesture to display a sheet
+//  .onTapGesture {
+//      isSheetShowing = true
+//  }
+
 import SwiftUI
 
 //Allow a user of this app to select an image from photo library
-
 struct PhotoPicker: UIViewControllerRepresentable {
     
     @Binding var newImage: UIImage
